@@ -4,10 +4,10 @@ import java.sql.*;
 
 public class BaseConnection {
 	private static Connection conn = null;
-	private static final String url = "jdbc:mysql://localhost/sw?characterEncoding=utf-8&useSSL=false&autoReconnect=true";
-	private static final String DRIVER = "com.mysql.jdbc.Driver";
-	private static final String user = "root";
-	private static final String password = "root";
+	private static final String url = "jdbc:sqlserver://localhost:1433;DatabaseName=ws";
+	private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	private static final String user = "sa";
+	private static final String password = "050016";
 	private String sql = null;
 	private Statement st = null;
 	private ResultSet rs = null;
