@@ -1,0 +1,11 @@
+answer表存放每个人选择的选项和填空的内容，stuid对应stu表中的id，w_id对应wenjuan表中的w_id
+
+questions表存放问题
+
+stu表存放每个人的信息，用于实名认证
+
+user存放用户的用户名和密码，密码经过md5加密
+
+user_g表存放管理员的用户名和密码
+
+wenjuan表存放问卷名，类型，日期
