@@ -1,5 +1,4 @@
-<%@ page import="com.cyz.dao.WenjuanDao" %>
-<%@ page import="com.cyz.bean.Wenjuan" %>
+
 <%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Jayce

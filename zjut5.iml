@@ -17,6 +17,7 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
+        <sourceRoots />
       </configuration>
     </facet>
   </component>
@@ -32,5 +33,26 @@
     <orderEntry type="library" name="org.eclipse.jst.j2ee.internal.web.container" level="application" />
     <orderEntry type="library" name="org.eclipse.jst.j2ee.internal.module.container" level="application" />
     <orderEntry type="library" name="@types/jquery" level="application" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../Tomcat/apache-tomcat-10.0.6/lib/servlet-api.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Tomcat/apache-tomcat-10.0.6/lib/tomcat-api.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Tomcat/apache-tomcat-10.0.6/lib/jsp-api.jar!/" />
+          <root url="file://$MODULE_DIR$/../../../Tomcat/apache-tomcat-10.0.6" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../../../Tomcat/apache-tomcat-10.0.6/webapps/docs/appdev/sample/src" />
+          <root url="file://$MODULE_DIR$/../../../Tomcat/apache-tomcat-10.0.6/webapps/examples/WEB-INF/classes" />
+          <root url="file://$MODULE_DIR$/../../../Tomcat/apache-tomcat-10.0.6/webapps/examples/WEB-INF/jsp/applet" />
+          <root url="file://$MODULE_DIR$/../../../Tomcat/apache-tomcat-10.0.6/webapps/examples/jsp/plugin/applet" />
+          <root url="file://$MODULE_DIR$/../../../Tomcat/apache-tomcat-10.0.6/work/Catalina/localhost/ROOT" />
+          <root url="file://$MODULE_DIR$/../../../Tomcat/apache-tomcat-10.0.6/work/Catalina/localhost/manager" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="jsp-api" level="project" />
   </component>
 </module>

@@ -1,6 +1,5 @@
 <%@page import="java.util.ArrayList" %>
-<%@page import="com.cyz.dao.LRDao" %>
-<%@page import="com.cyz.bean.User" %>
+
 <%@page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
