@@ -1,139 +1,150 @@
-   -- Do not check foreign key constraints
-    
-DECLARE @nocheckSql NVARCHAR(max);
+/*
+Navicat MySQL Data Transfer
 
+Source Server         : sa
+Source Server Version : 50528
+Source Host           : localhost:3306
+Source Database       : sw
+
+Target Server Type    : MYSQL
+Target Server Version : 50528
+File Encoding         : 65001
+
+Date: 2019-06-28 14:54:45
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
 -- Table structure for answer
 -- ----------------------------
-DROP TABLE IF EXISTS answer;
-CREATE TABLE answer (
-  id int NOT NULL identity,
-  stuid varchar(60) DEFAULT NULL,
-  w_id varchar(60) DEFAULT NULL,
-  conte varchar(255) DEFAULT NULL,
-  PRIMARY KEY (id)
-);
+DROP TABLE IF EXISTS `answer`;
+CREATE TABLE `answer` (
+  `id` int(30) NOT NULL AUTO_INCREMENT,
+  `stuid` varchar(60) DEFAULT NULL,
+  `w_id` varchar(60) DEFAULT NULL,
+  `conte` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of answer
 -- ----------------------------
-INSERT INTO answer(stuid,w_id,conte) VALUES ( '234', '9', '#填空14.1 15.1 16.1 17.1 18.1 19.1 20.1 21.1 22.1 23.1 24.1 25.1 26.1 * 总分13* 平均分1.0');
+INSERT INTO `answer` VALUES ('24', '234', '9', '#填空14.1 15.1 16.1 17.1 18.1 19.1 20.1 21.1 22.1 23.1 24.1 25.1 26.1 * 总分13* 平均分1.0');
 
 -- ----------------------------
 -- Table structure for questions
 -- ----------------------------
-DROP TABLE IF EXISTS questions;
-CREATE TABLE questions (
-  q_id int NOT NULL identity  ,
-  q_content varchar(255) DEFAULT NULL,
-  o_content varchar(100) DEFAULT NULL,
-  answers varchar(8000) DEFAULT NULL ,
-  w_id int DEFAULT NULL ,
-  PRIMARY KEY (q_id)
-);
+DROP TABLE IF EXISTS `questions`;
+CREATE TABLE `questions` (
+  `q_id` int(20) NOT NULL AUTO_INCREMENT COMMENT '问卷编号',
+  `q_content` varchar(255) DEFAULT NULL COMMENT '问题内容',
+  `o_content` varchar(100) DEFAULT NULL COMMENT '选项',
+  `answers` varchar(21040) DEFAULT NULL COMMENT '答案内容',
+  `w_id` int(11) DEFAULT NULL COMMENT '问卷id',
+  PRIMARY KEY (`q_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of questions
 -- ----------------------------
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ('毕业要求1．工程知识应用能力：能够适应现代信息技术发展，融会贯通工程数理基本知识和计算机科学与技术专业知识，并用于解决计算机复杂工程问题。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ('毕业要求2 问题分析能力：掌握计算机复杂工程问题的分析方法，具有解决计算机复杂工程问题的思维能力，能够应用数学、自然科学和工程科学的基本原理，识别、表达、并通过文献研究分析计算机领域的复杂工程问题，以获得有效结论。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求3 设计/开发解决方案能力：能够针对计算机复杂工程问题设计解决方案，开发满足特定需求的计算机应用系统或软件模块。在设计/开发环节中能够体现创新意识，并能考虑社会、健康、安全、法律、文化以及环境等因素。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求4 工程技术研究能力：能够应用计算机科学基本原理，发现和评估计算机复杂工程问题的解决办法，通过实验设计、数据分析与解释，对计算机复杂工程问题进行研究并得到合理有效的结论。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求5 使用现代工具能力：能够针对计算机领域的复杂工程问题，开发、选择与使用恰当的平台、技术、资源、现代工程工具和信息技术工具，包括对复杂工程问题的预测与模拟，并能够理解其局限性。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求6 工程与社会：能够基于工程相关背景知识进行合理分析，评价计算机工程实践和复杂工程问题解决方案对社会、健康、安全、法律以及文化的影响，并理解应承担的责任。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求7 环境和可持续发展：具有环境保护和可持续发展理念，能够理解和评价计算机领域复杂工程实践对环境、社会可持续发展的影响。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求8 履行职业规范能力：具有正确的人生观、价值观、人文社会科学素养、公民道德水平和社会责任感，能够在计算机工程实践中理解并遵守工程职业道德和规范，履行责任。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求9 个人和团队：具有良好的身心素质，了解计算机相关工程问题的多学科技术背景，能够在多学科背景下的团队中承担个体、团队成员以及负责人的角色。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求10 沟通能力：具有沟通的能力、方法和技巧，能够就计算机领域复杂工程问题与业界同行及社会公众进行有效沟通和交流，包括撰写报告和设计文稿、陈述发言、清晰表达或回应指令；并具备一定的国际视野，能够在跨文化背景下进行沟通和交流。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求11 项目管理能力：具有一定的项目管理知识和能力，理解并掌握计算机工程管理原理与经济决策方法，并能在多学科环境中应用。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求12 自主学习和终身学习能力：具有自主学习和终身学习的意识，有不断学习和适应发展的能力，能够通过自主学习适应经济社会发展的需要。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '对本专业人才培养 的意见和建议：', '', '', '8');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求1．工程知识应用能力：能够适应现代信息技术发展，融会贯通工程数理基本知识和计算机科学与技术专业知识，并用于解决计算机复杂工程问题。分数范围（0--100）', '', '&-8&-8&-5&32&32&32&无&12&12&12&12&&1', '9');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求2 问题分析能力：掌握计算机复杂工程问题的分析方法，具有解决计算机复杂工程问题的思维能力，能够应用数学、自然科学和工程科学的基本原理，识别、表达、并通过文献研究分析计算机领域的复杂工程问题，以获得有效结论。分数范围（0--100）', '', '&12&12&1&1&85&85&&无&&1', '9');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求3 设计/开发解决方案能力：能够针对计算机复杂工程问题设计解决方案，开发满足特定需求的计算机应用系统或软件模块。在设计/开发环节中能够体现创新意识，并能考虑社会、健康、安全、法律、文化以及环境等因素。分数范围（0--100）', '', '&12&12&2&2&12&12&&&&1', '9');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求4 工程技术研究能力：能够应用计算机科学基本原理，发现和评估计算机复杂工程问题的解决办法，通过实验设计、数据分析与解释，对计算机复杂工程问题进行研究并得到合理有效的结论。分数范围（0--100）', '', '&12&12&2&2&14&14&&&&1', '9');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求5 使用现代工具能力：能够针对计算机领域的复杂工程问题，开发、选择与使用恰当的平台、技术、资源、现代工程工具和信息技术工具，包括对复杂工程问题的预测与模拟，并能够理解其局限性。分数范围（0--100）', '', '&12&12&2&2&15&15&&&&1', '9');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求6 工程与社会：能够基于工程相关背景知识进行合理分析，评价计算机工程实践和复杂工程问题解决方案对社会、健康、安全、法律以及文化的影响，并理解应承担的责任。分数范围（0--100）', '', '&12&12&2&2&16&16&&&&1', '9');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求7 环境和可持续发展：具有环境保护和可持续发展理念，能够理解和评价计算机领域复杂工程实践对环境、社会可持续发展的影响。分数范围（0--100）', '', '&12&12&2&2&17&17&&&&1', '9');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求8 履行职业规范能力：具有正确的人生观、价值观、人文社会科学素养、公民道德水平和社会责任感，能够在计算机工程实践中理解并遵守工程职业道德和规范，履行责任。分数范围（0--100）', '', '&12&12&2&2&08&08&&&&1', '9');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ('毕业要求9 个人和团队：具有良好的身心素质，了解计算机相关工程问题的多学科技术背景，能够在多学科背景下的团队中承担个体、团队成员以及负责人的角色。分数范围（0--100）', '', '&12&12&2&2&09&09&&&&1', '9');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求10 沟通能力：具有沟通的能力、方法和技巧，能够就计算机领域复杂工程问题与业界同行及社会公众进行有效沟通和交流，包括撰写报告和设计文稿、陈述发言、清晰表达或回应指令；并具备一定的国际视野，能够在跨文化背景下进行沟通和交流。分数范围（0--100）', '', '&12&12&2&2&20&20&&&&1', '9');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求11 项目管理能力：具有一定的项目管理知识和能力，理解并掌握计算机工程管理原理与经济决策方法，并能在多学科环境中应用。分数范围（0--100）', '', '&12&12&2&2&21&21&&&&1', '9');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '毕业要求12 自主学习和终身学习能力：具有自主学习和终身学习的意识，有不断学习和适应发展的能力，能够通过自主学习适应经济社会发展的需要。分数范围（0--100）', '', '&12&12&2&2&22&22&&&&1', '9');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '对本专业人才培养 的意见和建议：', '', '&无&无&8&8&8&8&&&&1', '9');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够在游戏工程项目开发中进行系统概要设计和详细设计。分数范围（0--100）', '', '', '10');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够按照要求进行游戏开发项目的测试和评价。分数范围（0--100）', '', '', '10');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够在游戏工程实践活动中根据需要撰写工作报告、设计文档、宣传文案，以及口头汇报、陈述发言、演讲、谈判等。分数范围（0--100）', '', '', '10');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够理解和把握技术与管理、工程师与项目经理之间的关系，正确认识和主动融入工程项目管理活动。分数范围（0--100）', '', '', '10');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '在手机APP项目开发和设计过程中，能在教学案例的基础上，扩展和完善现有功能，具有良好的学习态度和一定的创新意识。分数范围（0--100）', '', '', '11');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '培养学生能够熟练掌握软件开发的原理和方法，在手机APP项目开发时，能撰写项目实施方案，并对项目的功能进行编码和实验。分数范围（0--100）', '', '', '11');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够针对移动平台领域复杂工程问题，选择和使用适当的平台环境和开发工具，来完成手机APP应用的设计与开发，并对结果进行仿真和预测。分数范围（0--100）', '', '', '11');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够理解多学科背景下的团队中每个角色的定位与责任，能够胜任个人承担的角色任务，并能够与团队其他成员有沟通，听取并综合团队其他成员的意见与建议，能够胜任负责人的角色。分数范围（0--100）', '', '', '11');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够利用Web开发相关知识和技术在计算机软件开发项目中进行系统概要设计、详细设计，编码测试及数据维护。分数范围（0--100）', '', '', '12');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能及时跟踪Web开发领域及相关行业发展状况，具有自主学习、自主开发设计，整理分析系统能力并能得出有效结论。分数范围（0--100）', '', '', '12');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够使用Web开发知识和MVC设计模式结合软件工程技术相关问题背景和科学原理，评价平台环境、技术工具和有效资源在问题求解中的局限性。分数范围（0--100）', '', '', '12');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够根据用户需求确定软件应用系统的设计目标。分数范围（0--100）', '', '', '13');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '按照可视化程序设计思想，结合软件工程的系统开发流程，利用相关开发工具，能够系统分析所面对的工程问题，并进行系统概要设计和详细设计。分数范围（0--100）', '', '', '13');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够按照设计要求进行系统开发项目的软件测试和评价。分数范围（0--100）', '', '', '13');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '结合信息社会的需求变化，能够积极分析工程技术应用领域出现的社会、健康、安全、法律、文化以及环境等新问题，尝试采取新思路在系统设计方案中积极应对。分数范围（0--100）', '', '', '13');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够在设计过程中撰写规范的设计报告，在设计完成后通过答辩。分数范围（0--100）', '', '', '13');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ('能够按照要求对设计与开发的计算机系统进行测试和评价。分数范围（0--100）', '', '', '14');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '在计算机系统设计和开发过程中具有创新的态度和意识。分数范围（0--100）', '', '', '14');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '在计算机系统设计和开发过程中，能够对采集到的实验数据进行整理、分析和解释，并能通过信息综合得出有效结论。分数范围（0--100）', '', '', '14');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '在课程项目的团队协作完成过程中，能够胜任团队成员角色，完成团队分配的工作。分数范围（0--100）', '', '', '14');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够与团队成员有效地沟通，具有一定的人际交往能力，能组织团队成员开展工作。分数范围（0--100）', '', '', '14');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够针对软件工程领域的复杂工程问题设计解决方案，开发满足特定需求的计算机应用系统或组件，并能够在设计/开发环节中体现创新意识，考虑社会、健康、安全、法律、文化及环境等因素；分数范围（0--100）', '', '', '15');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够基于计算科学原理并采用科学方法对软件工程领域的复杂工程问题进行研究，包括设计实验、分析与解释数据，并通过信息综合得到合理有效的结论；分数范围（0--100）', '', '', '15');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够针对软件工程领域的复杂问题，开发、选择与使用恰当的平台、技术、资源、现代工程工具和信息技术工具，包括对复杂工程问题的预测与模拟，并能够理解其局限性。分数范围（0--100）', '', '', '15');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够利用Linux网络服务配置技术和集群对企业级网站系统中的功能、模块、流程进行设计，并且在系统工程项目设计开发过程中具有创新的态度和意识。分数范围（0--100）', '', '', '16');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '能够针对具体的网络需求方案，运用Linux网络技术和集群专业知识设计具体方案，为解决软件复杂工程问题提供支持。分数范围（0--100）', '', '', '16');
-INSERT INTO questions(q_content,o_content,answers,w_id) VALUES ( '在Linux工程实践中能自觉遵守职业道德和规范，能够履行相应的责任和义务。具有一定的人际交往能力，能组织团队成员开展工作。分数范围（0--100）', '', '', '16');
+INSERT INTO `questions` VALUES ('1', '毕业要求1．工程知识应用能力：能够适应现代信息技术发展，融会贯通工程数理基本知识和计算机科学与技术专业知识，并用于解决计算机复杂工程问题。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
+INSERT INTO `questions` VALUES ('2', '毕业要求2 问题分析能力：掌握计算机复杂工程问题的分析方法，具有解决计算机复杂工程问题的思维能力，能够应用数学、自然科学和工程科学的基本原理，识别、表达、并通过文献研究分析计算机领域的复杂工程问题，以获得有效结论。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
+INSERT INTO `questions` VALUES ('3', '毕业要求3 设计/开发解决方案能力：能够针对计算机复杂工程问题设计解决方案，开发满足特定需求的计算机应用系统或软件模块。在设计/开发环节中能够体现创新意识，并能考虑社会、健康、安全、法律、文化以及环境等因素。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
+INSERT INTO `questions` VALUES ('4', '毕业要求4 工程技术研究能力：能够应用计算机科学基本原理，发现和评估计算机复杂工程问题的解决办法，通过实验设计、数据分析与解释，对计算机复杂工程问题进行研究并得到合理有效的结论。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
+INSERT INTO `questions` VALUES ('5', '毕业要求5 使用现代工具能力：能够针对计算机领域的复杂工程问题，开发、选择与使用恰当的平台、技术、资源、现代工程工具和信息技术工具，包括对复杂工程问题的预测与模拟，并能够理解其局限性。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
+INSERT INTO `questions` VALUES ('6', '毕业要求6 工程与社会：能够基于工程相关背景知识进行合理分析，评价计算机工程实践和复杂工程问题解决方案对社会、健康、安全、法律以及文化的影响，并理解应承担的责任。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
+INSERT INTO `questions` VALUES ('7', '毕业要求7 环境和可持续发展：具有环境保护和可持续发展理念，能够理解和评价计算机领域复杂工程实践对环境、社会可持续发展的影响。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
+INSERT INTO `questions` VALUES ('8', '毕业要求8 履行职业规范能力：具有正确的人生观、价值观、人文社会科学素养、公民道德水平和社会责任感，能够在计算机工程实践中理解并遵守工程职业道德和规范，履行责任。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
+INSERT INTO `questions` VALUES ('9', '毕业要求9 个人和团队：具有良好的身心素质，了解计算机相关工程问题的多学科技术背景，能够在多学科背景下的团队中承担个体、团队成员以及负责人的角色。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
+INSERT INTO `questions` VALUES ('10', '毕业要求10 沟通能力：具有沟通的能力、方法和技巧，能够就计算机领域复杂工程问题与业界同行及社会公众进行有效沟通和交流，包括撰写报告和设计文稿、陈述发言、清晰表达或回应指令；并具备一定的国际视野，能够在跨文化背景下进行沟通和交流。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
+INSERT INTO `questions` VALUES ('11', '毕业要求11 项目管理能力：具有一定的项目管理知识和能力，理解并掌握计算机工程管理原理与经济决策方法，并能在多学科环境中应用。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
+INSERT INTO `questions` VALUES ('12', '毕业要求12 自主学习和终身学习能力：具有自主学习和终身学习的意识，有不断学习和适应发展的能力，能够通过自主学习适应经济社会发展的需要。', '#【单选】优（10-9】#良（9-7】#中（7-6】#差（6-0】', '&0&0&0&0', '8');
+INSERT INTO `questions` VALUES ('13', '对本专业人才培养 的意见和建议：', '', '', '8');
+INSERT INTO `questions` VALUES ('14', '毕业要求1．工程知识应用能力：能够适应现代信息技术发展，融会贯通工程数理基本知识和计算机科学与技术专业知识，并用于解决计算机复杂工程问题。分数范围（0--100）', '', '&-8&-8&-5&32&32&32&无&12&12&12&12&&1', '9');
+INSERT INTO `questions` VALUES ('15', '毕业要求2 问题分析能力：掌握计算机复杂工程问题的分析方法，具有解决计算机复杂工程问题的思维能力，能够应用数学、自然科学和工程科学的基本原理，识别、表达、并通过文献研究分析计算机领域的复杂工程问题，以获得有效结论。分数范围（0--100）', '', '&12&12&1&1&85&85&&无&&1', '9');
+INSERT INTO `questions` VALUES ('16', '毕业要求3 设计/开发解决方案能力：能够针对计算机复杂工程问题设计解决方案，开发满足特定需求的计算机应用系统或软件模块。在设计/开发环节中能够体现创新意识，并能考虑社会、健康、安全、法律、文化以及环境等因素。分数范围（0--100）', '', '&12&12&2&2&12&12&&&&1', '9');
+INSERT INTO `questions` VALUES ('17', '毕业要求4 工程技术研究能力：能够应用计算机科学基本原理，发现和评估计算机复杂工程问题的解决办法，通过实验设计、数据分析与解释，对计算机复杂工程问题进行研究并得到合理有效的结论。分数范围（0--100）', '', '&12&12&2&2&14&14&&&&1', '9');
+INSERT INTO `questions` VALUES ('18', '毕业要求5 使用现代工具能力：能够针对计算机领域的复杂工程问题，开发、选择与使用恰当的平台、技术、资源、现代工程工具和信息技术工具，包括对复杂工程问题的预测与模拟，并能够理解其局限性。分数范围（0--100）', '', '&12&12&2&2&15&15&&&&1', '9');
+INSERT INTO `questions` VALUES ('19', '毕业要求6 工程与社会：能够基于工程相关背景知识进行合理分析，评价计算机工程实践和复杂工程问题解决方案对社会、健康、安全、法律以及文化的影响，并理解应承担的责任。分数范围（0--100）', '', '&12&12&2&2&16&16&&&&1', '9');
+INSERT INTO `questions` VALUES ('20', '毕业要求7 环境和可持续发展：具有环境保护和可持续发展理念，能够理解和评价计算机领域复杂工程实践对环境、社会可持续发展的影响。分数范围（0--100）', '', '&12&12&2&2&17&17&&&&1', '9');
+INSERT INTO `questions` VALUES ('21', '毕业要求8 履行职业规范能力：具有正确的人生观、价值观、人文社会科学素养、公民道德水平和社会责任感，能够在计算机工程实践中理解并遵守工程职业道德和规范，履行责任。分数范围（0--100）', '', '&12&12&2&2&08&08&&&&1', '9');
+INSERT INTO `questions` VALUES ('22', '毕业要求9 个人和团队：具有良好的身心素质，了解计算机相关工程问题的多学科技术背景，能够在多学科背景下的团队中承担个体、团队成员以及负责人的角色。分数范围（0--100）', '', '&12&12&2&2&09&09&&&&1', '9');
+INSERT INTO `questions` VALUES ('23', '毕业要求10 沟通能力：具有沟通的能力、方法和技巧，能够就计算机领域复杂工程问题与业界同行及社会公众进行有效沟通和交流，包括撰写报告和设计文稿、陈述发言、清晰表达或回应指令；并具备一定的国际视野，能够在跨文化背景下进行沟通和交流。分数范围（0--100）', '', '&12&12&2&2&20&20&&&&1', '9');
+INSERT INTO `questions` VALUES ('24', '毕业要求11 项目管理能力：具有一定的项目管理知识和能力，理解并掌握计算机工程管理原理与经济决策方法，并能在多学科环境中应用。分数范围（0--100）', '', '&12&12&2&2&21&21&&&&1', '9');
+INSERT INTO `questions` VALUES ('25', '毕业要求12 自主学习和终身学习能力：具有自主学习和终身学习的意识，有不断学习和适应发展的能力，能够通过自主学习适应经济社会发展的需要。分数范围（0--100）', '', '&12&12&2&2&22&22&&&&1', '9');
+INSERT INTO `questions` VALUES ('26', '对本专业人才培养 的意见和建议：', '', '&无&无&8&8&8&8&&&&1', '9');
+INSERT INTO `questions` VALUES ('27', '能够在游戏工程项目开发中进行系统概要设计和详细设计。分数范围（0--100）', '', '', '10');
+INSERT INTO `questions` VALUES ('28', '能够按照要求进行游戏开发项目的测试和评价。分数范围（0--100）', '', '', '10');
+INSERT INTO `questions` VALUES ('29', '能够在游戏工程实践活动中根据需要撰写工作报告、设计文档、宣传文案，以及口头汇报、陈述发言、演讲、谈判等。分数范围（0--100）', '', '', '10');
+INSERT INTO `questions` VALUES ('30', '能够理解和把握技术与管理、工程师与项目经理之间的关系，正确认识和主动融入工程项目管理活动。分数范围（0--100）', '', '', '10');
+INSERT INTO `questions` VALUES ('31', '在手机APP项目开发和设计过程中，能在教学案例的基础上，扩展和完善现有功能，具有良好的学习态度和一定的创新意识。分数范围（0--100）', '', '', '11');
+INSERT INTO `questions` VALUES ('32', '培养学生能够熟练掌握软件开发的原理和方法，在手机APP项目开发时，能撰写项目实施方案，并对项目的功能进行编码和实验。分数范围（0--100）', '', '', '11');
+INSERT INTO `questions` VALUES ('33', '能够针对移动平台领域复杂工程问题，选择和使用适当的平台环境和开发工具，来完成手机APP应用的设计与开发，并对结果进行仿真和预测。分数范围（0--100）', '', '', '11');
+INSERT INTO `questions` VALUES ('34', '能够理解多学科背景下的团队中每个角色的定位与责任，能够胜任个人承担的角色任务，并能够与团队其他成员有沟通，听取并综合团队其他成员的意见与建议，能够胜任负责人的角色。分数范围（0--100）', '', '', '11');
+INSERT INTO `questions` VALUES ('35', '能够利用Web开发相关知识和技术在计算机软件开发项目中进行系统概要设计、详细设计，编码测试及数据维护。分数范围（0--100）', '', '', '12');
+INSERT INTO `questions` VALUES ('36', '能及时跟踪Web开发领域及相关行业发展状况，具有自主学习、自主开发设计，整理分析系统能力并能得出有效结论。分数范围（0--100）', '', '', '12');
+INSERT INTO `questions` VALUES ('37', '能够使用Web开发知识和MVC设计模式结合软件工程技术相关问题背景和科学原理，评价平台环境、技术工具和有效资源在问题求解中的局限性。分数范围（0--100）', '', '', '12');
+INSERT INTO `questions` VALUES ('38', '能够根据用户需求确定软件应用系统的设计目标。分数范围（0--100）', '', '', '13');
+INSERT INTO `questions` VALUES ('39', '按照可视化程序设计思想，结合软件工程的系统开发流程，利用相关开发工具，能够系统分析所面对的工程问题，并进行系统概要设计和详细设计。分数范围（0--100）', '', '', '13');
+INSERT INTO `questions` VALUES ('40', '能够按照设计要求进行系统开发项目的软件测试和评价。分数范围（0--100）', '', '', '13');
+INSERT INTO `questions` VALUES ('41', '结合信息社会的需求变化，能够积极分析工程技术应用领域出现的社会、健康、安全、法律、文化以及环境等新问题，尝试采取新思路在系统设计方案中积极应对。分数范围（0--100）', '', '', '13');
+INSERT INTO `questions` VALUES ('42', '能够在设计过程中撰写规范的设计报告，在设计完成后通过答辩。分数范围（0--100）', '', '', '13');
+INSERT INTO `questions` VALUES ('43', '能够按照要求对设计与开发的计算机系统进行测试和评价。分数范围（0--100）', '', '', '14');
+INSERT INTO `questions` VALUES ('44', '在计算机系统设计和开发过程中具有创新的态度和意识。分数范围（0--100）', '', '', '14');
+INSERT INTO `questions` VALUES ('45', '在计算机系统设计和开发过程中，能够对采集到的实验数据进行整理、分析和解释，并能通过信息综合得出有效结论。分数范围（0--100）', '', '', '14');
+INSERT INTO `questions` VALUES ('46', '在课程项目的团队协作完成过程中，能够胜任团队成员角色，完成团队分配的工作。分数范围（0--100）', '', '', '14');
+INSERT INTO `questions` VALUES ('47', '能够与团队成员有效地沟通，具有一定的人际交往能力，能组织团队成员开展工作。分数范围（0--100）', '', '', '14');
+INSERT INTO `questions` VALUES ('48', '能够针对软件工程领域的复杂工程问题设计解决方案，开发满足特定需求的计算机应用系统或组件，并能够在设计/开发环节中体现创新意识，考虑社会、健康、安全、法律、文化及环境等因素；分数范围（0--100）', '', '', '15');
+INSERT INTO `questions` VALUES ('49', '能够基于计算科学原理并采用科学方法对软件工程领域的复杂工程问题进行研究，包括设计实验、分析与解释数据，并通过信息综合得到合理有效的结论；分数范围（0--100）', '', '', '15');
+INSERT INTO `questions` VALUES ('50', '能够针对软件工程领域的复杂问题，开发、选择与使用恰当的平台、技术、资源、现代工程工具和信息技术工具，包括对复杂工程问题的预测与模拟，并能够理解其局限性。分数范围（0--100）', '', '', '15');
+INSERT INTO `questions` VALUES ('51', '能够利用Linux网络服务配置技术和集群对企业级网站系统中的功能、模块、流程进行设计，并且在系统工程项目设计开发过程中具有创新的态度和意识。分数范围（0--100）', '', '', '16');
+INSERT INTO `questions` VALUES ('52', '能够针对具体的网络需求方案，运用Linux网络技术和集群专业知识设计具体方案，为解决软件复杂工程问题提供支持。分数范围（0--100）', '', '', '16');
+INSERT INTO `questions` VALUES ('53', '在Linux工程实践中能自觉遵守职业道德和规范，能够履行相应的责任和义务。具有一定的人际交往能力，能组织团队成员开展工作。分数范围（0--100）', '', '', '16');
 
 -- ----------------------------
 -- Table structure for stu
 -- ----------------------------
-DROP TABLE IF EXISTS stu;
-CREATE TABLE stu (
-  id int NOT NULL identity,
-  stuid varchar(10) DEFAULT NULL,
-  name varchar(60) DEFAULT NULL,
-  PRIMARY KEY (id)
-);
+DROP TABLE IF EXISTS `stu`;
+CREATE TABLE `stu` (
+  `id` int(30) NOT NULL AUTO_INCREMENT,
+  `stuid` varchar(10) DEFAULT NULL,
+  `name` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of stu
 -- ----------------------------
-INSERT INTO stu(stuid,name) VALUES ( '12345', '张三');
-INSERT INTO stu(stuid,name) VALUES ( '123456', '李四');
+INSERT INTO `stu` VALUES ('1', '12345', '张三');
+INSERT INTO `stu` VALUES ('2', '123456', '李四');
 -- ----------------------------
 -- Table structure for user
 -- ----------------------------
-DROP TABLE IF EXISTS user_n;
-CREATE TABLE user_n (
-  u_id int NOT NULL identity,
-  username varchar(255),
-  password varchar(255),
-  PRIMARY KEY (u_id)
-);
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `u_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户编号',
+  `username` varchar(255) NOT NULL COMMENT '用户名',
+  `password` varchar(255) NOT NULL COMMENT '用户密码',
+  PRIMARY KEY (`u_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO user_n(username,password) VALUES ( 'admin', '21232y297q.57q.5q.743894q.0t4q.801ye?3');
-INSERT INTO user_n(username,password) VALUES ( '123', '202e?w962q.e?59075w964w07152r234w70');
+INSERT INTO `user` VALUES ('1', 'admin', '21232y297q.57q.5q.743894q.0t`4q.801ye?3');
+INSERT INTO `user` VALUES ('2', '123', '202e?w962q.e?59075w964w07152r234w70');
 
 -- ----------------------------
 -- Table structure for user_g
 -- ----------------------------
-DROP TABLE IF EXISTS user_g;
-CREATE TABLE user_g (
-  g_id int NOT NULL identity ,
-  username_g varchar(255) NOT NULL,
-  password_g varchar(255) NOT NULL,
-  PRIMARY KEY (g_id)
-);
-
+DROP TABLE IF EXISTS `user_g`;
+CREATE TABLE `user_g` (
+  `g_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '管理员编号',
+  `username_g` varchar(255) NOT NULL COMMENT '管理人name',
+  `password_g` varchar(255) NOT NULL COMMENT '管理人psw',
+  PRIMARY KEY (`g_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of user_g
@@ -142,26 +153,25 @@ CREATE TABLE user_g (
 -- ----------------------------
 -- Table structure for wenjuan
 -- ----------------------------
-DROP TABLE IF EXISTS wenjuan;
-CREATE TABLE wenjuan (
-  w_id int NOT NULL identity,
-  w_title varchar(255) DEFAULT NULL,
-  w_type varchar(255) DEFAULT NULL,
-  w_endtime date DEFAULT NULL,
-  u_id int DEFAULT NULL,
-  PRIMARY KEY (w_id)
-) ;
-
+DROP TABLE IF EXISTS `wenjuan`;
+CREATE TABLE `wenjuan` (
+  `w_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '问卷id',
+  `w_title` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '问卷标题',
+  `w_type` varchar(255) CHARACTER SET utf8 DEFAULT NULL COMMENT '问卷类别',
+  `w_endtime` date DEFAULT NULL COMMENT '截止时间',
+  `u_id` int(11) DEFAULT NULL COMMENT '用户id',
+  PRIMARY KEY (`w_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of wenjuan
 -- ----------------------------
-INSERT INTO wenjuan(w_title,w_type,w_endtime,u_id) VALUES ('计算机科学与技术 专业 2019 届学生毕业要求达成情况自评表 ', 'A类', '2019-07-07', '1');
-INSERT INTO wenjuan(w_title,w_type,w_endtime,u_id) VALUES ('计算机科学与技术 专业 2019 届学生毕业要求达成情况自评表 ', 'A类', '2019-07-07', '1');
-INSERT INTO wenjuan(w_title,w_type,w_endtime,u_id) VALUES ( '游戏开发实训', 'A类', '2019-07-31', '1');
-INSERT INTO wenjuan(w_title,w_type,w_endtime,u_id) VALUES ( 'Android实训', 'A类', '2019-07-31', '1');
-INSERT INTO wenjuan(w_title,w_type,w_endtime,u_id) VALUES ( 'Java web实训', 'A类', '2019-07-31', '1');
-INSERT INTO wenjuan(w_title,w_type,w_endtime,u_id) VALUES ( '技术综合应用实训（Java）', 'A类', '2019-07-31', '1');
-INSERT INTO wenjuan(w_title,w_type,w_endtime,u_id) VALUES ( '岗位技能训练', 'A类', '2019-07-31', '1');
-INSERT INTO wenjuan(w_title,w_type,w_endtime,u_id) VALUES ( 'Hadoop管理与应用开发实训', 'A类', '2019-07-31', '1');
-INSERT INTO wenjuan(w_title,w_type,w_endtime,u_id) VALUES ( 'Linux网络与集群管理实训', 'A类', '2019-07-31', '1');
+INSERT INTO `wenjuan` VALUES ('8', '计算机科学与技术 专业 2019 届学生毕业要求达成情况自评表 ', 'A类', '2019-07-07', '1');
+INSERT INTO `wenjuan` VALUES ('9', '计算机科学与技术 专业 2019 届学生毕业要求达成情况自评表 ', 'A类', '2019-07-07', '1');
+INSERT INTO `wenjuan` VALUES ('10', '游戏开发实训', 'A类', '2019-07-31', '1');
+INSERT INTO `wenjuan` VALUES ('11', 'Android实训', 'A类', '2019-07-31', '1');
+INSERT INTO `wenjuan` VALUES ('12', 'Java web实训', 'A类', '2019-07-31', '1');
+INSERT INTO `wenjuan` VALUES ('13', '技术综合应用实训（Java）', 'A类', '2019-07-31', '1');
+INSERT INTO `wenjuan` VALUES ('14', '岗位技能训练', 'A类', '2019-07-31', '1');
+INSERT INTO `wenjuan` VALUES ('15', 'Hadoop管理与应用开发实训', 'A类', '2019-07-31', '1');
+INSERT INTO `wenjuan` VALUES ('16', 'Linux网络与集群管理实训', 'A类', '2019-07-31', '1');
