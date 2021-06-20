@@ -397,11 +397,12 @@ $(function(){
 	var menu = [{"id":"1","name":"主菜单","parentId":"0","url":"","icon":"","order":"1","isHeader":"1","childMenus":[
 					{"id":"3","name":"用户管理","parentId":"1","url":"","icon":"&#xe604;","order":"1","isHeader":"0","childMenus":[
 						{"id":"4","name":"查看所有用户","parentId":"3","url":"view_user.jsp","icon":"","order":"1","isHeader":"0","childMenus":""},
-						{"id":"5","name":"添加用户账号","parentId":"3","url":"adduser_g.jsp","icon":"","order":"1","isHeader":"0","childMenus":""}
+						{"id":"5","name":"添加用户账号","parentId":"3","url":"adduser_g.jsp","icon":"","order":"1","isHeader":"0","childMenus":""},
+						{"id":"6","name":"添加学生信息","parentId":"3","url":"addstu.jsp","icon":"","order":"1","isHeader":"0","childMenus":""}
 					]},
-					{"id":"6","name":"问卷管理","parentId":"1","url":"","icon":"&#xe602;","order":"1","isHeader":"0","childMenus":[
-						{"id":"7","name":"查看所有问卷","parentId":"6","url":"gview_WJ.jsp","icon":"","order":"1","isHeader":"0","childMenus":""},
-						{"id":"8","name":"统计分析问卷","parentId":"6","url":"gview_fx.jsp","icon":"","order":"1","isHeader":"0","childMenus":""}
+					{"id":"7","name":"问卷管理","parentId":"1","url":"","icon":"&#xe602;","order":"1","isHeader":"0","childMenus":[
+						{"id":"8","name":"查看所有问卷","parentId":"7","url":"gview_WJ.jsp","icon":"","order":"1","isHeader":"0","childMenus":""},
+						{"id":"9","name":"统计分析问卷","parentId":"7","url":"gview_fx.jsp","icon":"","order":"1","isHeader":"0","childMenus":""}
 					]}
 				]},
 				/*{"id":"2","name":"框架案例","parentId":"0","url":"","icon":"","order":"2","isHeader":"1","childMenus":[
