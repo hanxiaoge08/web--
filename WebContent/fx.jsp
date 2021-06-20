@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/echarts.js"></script>
 
 </head>
 
@@ -48,6 +49,9 @@
                     <%
                         if (list.size() > 0) {
                             for (int i = 0; i < list.size(); i++) {
+                                String abc[]={"A","B","C","D","E","F","G","H","I","J","K","L","M","N"};
+                                int count[]={};
+                                int flag=0;
                                 if (list.get(i).getO_content().equals("") || list.get(i).getO_content() == "") {
                     %>
                     <br>
@@ -100,9 +104,14 @@
                             imx = 0;
                             mx += 1;
                         }
+
+
+
+
                         if (strings[1].substring(1, 3).equals("单选")) {
 
                     %>
+
 
                     <label><%=i + 1%>、 <%=list.get(i).getQ_content()%>【单选】</label>
                     <input type="text" style="display: none;" value="<%=list.get(i).getQ_id()%>" name="ddxqid<%=dx%>">
@@ -128,10 +137,53 @@
                         &nbsp;<b style="color: #01AAED"><%=Integer.parseInt(strings2[n]) * 100 / (float) num2%>%</b></p>
                     <%
                                             }
+
+                    count[flag]=Integer.parseInt(strings2[n]);
+                    flag++;
+
+
                                         }
+
                                         dx += 1;
                                     }
-                                }
+
+
+
+                                }%>
+
+                    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                    <div id="main" style="width: 600px;height:400px;"></div>
+                    <script type="text/javascript">
+                        var flag1=0;
+                        var count1=new Array();
+                        var count2=new Array("A","B","C","D","E","F","G","H","I","J","K","L","M","N");
+                        var count3=new Array();
+                        count1=<%=count%>.arraySlice(0);
+                        flag1=count1.length;
+                        count3=count2.slice(0,flag1-1);
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart = echarts.init(document.getElementById('main'));
+                        myChart.setOption({
+                            title: {
+                                text: '统计结果'
+                            },
+                            tooltip: {},
+                            legend: {
+                                data:['人数']
+                            },
+                            xAxis: {
+                                data:count3
+                            },
+                            yAxis: {},
+                            series: [{
+                                name: '人数',
+                                type: 'bar',
+                                data: count1
+                            }]
+                        })
+
+                    </script>
+                    <%
                             }
                         }
                     %>

@@ -8,9 +8,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+     <meta charset="utf-8">
     <title>分析</title>
+    <!-- 引入 echarts.js -->
+    <script src="js/echarts.js"></script>
 </head>
 <body>
-<p style="color: #01AAED; font-size: 30px;margin-top: 50px" align="center">敬请期待...</p>
+
+
+
+
+
+
 </body>
 </html>

@@ -20,7 +20,7 @@ public class FindAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpServletResponse response = ServletActionContext.getResponse();
         /*try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/questionnaire", "root", "123456");
             Statement stmt = conn.createStatement();
             String sql = "select * from user";
